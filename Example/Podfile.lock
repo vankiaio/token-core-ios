@@ -1,0 +1,40 @@
+PODS:
+  - BigInt (3.0.0):
+    - SipHash (~> 1.2)
+  - CryptoSwift (0.9.0)
+  - GRKOpenSSLFramework (1.0.2.14.1)
+  - SipHash (1.2.2)
+  - TokenCore (0.1):
+    - BigInt (= 3.0.0)
+    - CryptoSwift (= 0.9.0)
+    - GRKOpenSSLFramework
+
+DEPENDENCIES:
+  - TokenCore (from `https://github.com/consenlabs/token-core-ios.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BigInt
+    - CryptoSwift
+    - GRKOpenSSLFramework
+    - SipHash
+
+EXTERNAL SOURCES:
+  TokenCore:
+    :git: https://github.com/consenlabs/token-core-ios.git
+
+CHECKOUT OPTIONS:
+  TokenCore:
+    :commit: bb38707021a78bb34599cbc5c5b1085446c2131b
+    :git: https://github.com/consenlabs/token-core-ios.git
+
+SPEC CHECKSUMS:
+  BigInt: a7864bcecd2976bced91963baef90079dbdcca25
+  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
+  GRKOpenSSLFramework: 845532a41bd75c6f5b99c9d95b25858357268a78
+  SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  TokenCore: c57b3e85b320361eadfc224868c013ef2d875542
+
+PODFILE CHECKSUM: 4c21ebe365fb6455415f6325e9ef333aa3b32c16
+
+COCOAPODS: 1.5.3
