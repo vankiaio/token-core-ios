@@ -16,9 +16,9 @@ module CCommonCrypto {
   export *
 }
 
-//module CoreBitcoin [system] {
-//  header "../Vendor/CoreBitcoin/CoreBitcoin.h"
-//  header "../Vendor/CoreBitcoin/NSData+BTCData.h"
-//  header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
-//  export *
-//}
+module CoreBitcoin [system] {
+  header "../Vendor/CoreBitcoin/CoreBitcoin.h"
+  header "../Vendor/CoreBitcoin/NSData+BTCData.h"
+  header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
+  export *
+}
