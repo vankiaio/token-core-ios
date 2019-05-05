@@ -4,8 +4,8 @@ module libscrypt [system][extern_c] {
 }
 
 module libsecp256k1 [system][extern_c] {
-  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1.h"
-  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1_recovery.h"
+///  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1.h"
+///  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1_recovery.h"
   export *
 }
 
@@ -17,8 +17,8 @@ module CCommonCrypto {
 }
 
 module CoreBitcoin [system] {
-  header "../Vendor/CoreBitcoin/CoreBitcoin.h"
-  header "../Vendor/CoreBitcoin/NSData+BTCData.h"
-  header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
+///  header "../Vendor/CoreBitcoin/CoreBitcoin.h"
+///  header "../Vendor/CoreBitcoin/NSData+BTCData.h"
+///  header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
   export *
 }

@@ -1,8 +1,11 @@
 PODS:
+  - Alamofire (5.0.0-beta.6)
   - BigInt (3.0.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.9.0)
-  - GRKOpenSSLFramework (1.0.2.14.1)
+  - GRKOpenSSLFramework (1.0.2.16)
+  - MBProgressHUD (1.1.0)
+  - PureLayout (3.1.4)
   - SipHash (1.2.2)
   - TokenCore (0.1):
     - BigInt (= 3.0.0)
@@ -10,31 +13,40 @@ PODS:
     - GRKOpenSSLFramework
 
 DEPENDENCIES:
-  - TokenCore (from `https://github.com/consenlabs/token-core-ios.git`)
+  - Alamofire (~> 5.0.0-beta.6)
+  - MBProgressHUD (~> 1.1.0)
+  - PureLayout
+  - TokenCore (from `https://github.com/vankiaio/token-core-ios.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - BigInt
     - CryptoSwift
     - GRKOpenSSLFramework
+    - MBProgressHUD
+    - PureLayout
     - SipHash
 
 EXTERNAL SOURCES:
   TokenCore:
-    :git: https://github.com/consenlabs/token-core-ios.git
+    :git: https://github.com/vankiaio/token-core-ios.git
 
 CHECKOUT OPTIONS:
   TokenCore:
-    :commit: bb38707021a78bb34599cbc5c5b1085446c2131b
-    :git: https://github.com/consenlabs/token-core-ios.git
+    :commit: 014bf807b1f6926ce82a5cefa50ede9ca44dea0a
+    :git: https://github.com/vankiaio/token-core-ios.git
 
 SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
   BigInt: a7864bcecd2976bced91963baef90079dbdcca25
   CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
-  GRKOpenSSLFramework: 845532a41bd75c6f5b99c9d95b25858357268a78
+  GRKOpenSSLFramework: 35944e317e6336b2944ad70b059d84db6b2d8532
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  PureLayout: f08c01b8dec00bb14a1fefa3de4c7d9c265df85e
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  TokenCore: c57b3e85b320361eadfc224868c013ef2d875542
+  TokenCore: 02f3200af1cf3894bb98f2fe9a35c33009f2c553
 
-PODFILE CHECKSUM: 4c21ebe365fb6455415f6325e9ef333aa3b32c16
+PODFILE CHECKSUM: 8d0035c1f0d1429d40bac59d5059f2f533bce968
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0.beta.3

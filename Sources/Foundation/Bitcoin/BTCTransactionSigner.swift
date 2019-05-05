@@ -47,6 +47,27 @@ struct UTXO {
       derivedPath: derivedPath
     )
   }
+  
+
+  static func parseFormBlockchain(_ raw: [String: Any], isTestNet: Bool, isSegWit: Bool) -> UTXO? {
+    guard let txHash = raw["tx_hash_big_endian"] as? String,
+    let vout = raw["tx_output_n"] as? Int,
+    let amount = raw["value"] as? Int64,
+      let scriptPubKey = raw["script"] as? String else {
+        return nil
+    }
+//    let address = WalletManager.scriptToAddress(scriptPubKey, isTestNet: isTestNet, isSegWit: isSegWit)
+    return self.init(
+      txHash: txHash,
+      vout: vout,
+      amount: amount,
+      address: "",
+      scriptPubKey: scriptPubKey,
+      derivedPath: nil
+    )
+  }
+  
+  
 }
 
 class BTCTransactionSigner {
