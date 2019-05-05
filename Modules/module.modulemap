@@ -3,11 +3,11 @@ module libscrypt [system][extern_c] {
   export *
 }
 
-//module libsecp256k1 [system][extern_c] {
-//  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1.h"
-//  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1_recovery.h"
-//  export *
-//}
+module libsecp256k1 [system][extern_c] {
+  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1.h"
+  header "../Vendor/secp256k1/secp256k1.framework/Headers/secp256k1_recovery.h"
+  export *
+}
 
 /// On macOS 10.14 and above, install /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
 /// to have /usr/include headers.
