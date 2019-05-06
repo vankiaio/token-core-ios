@@ -34,7 +34,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   TokenCore:
-    :commit: 14cb5f3dcf6ff77ec7b35aad8b48d55e861130fb
+    :commit: 012ecfa83d3ee4d51f49d7d2be1190c60d6c957c
     :git: https://github.com/vankiaio/token-core-ios.git
 
 SPEC CHECKSUMS:
@@ -49,4 +49,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 8d0035c1f0d1429d40bac59d5059f2f533bce968
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.6.1
