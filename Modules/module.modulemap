@@ -17,7 +17,6 @@ module CCommonCrypto {
 }
 
 framework module CoreBitcoin [system] {
-  umbrella header "../Sources/TokenCore.h"
   umbrella header "../Vendor/CoreBitcoin/CoreBitcoin.h"
   umbrella header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
   umbrella header "../Vendor/CoreBitcoin/NSData+BTCData.h"
