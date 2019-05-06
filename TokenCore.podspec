@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
     "sha256.h",
     "slowequals.h",
     "sysendian.h"
-  ].map{|path| "#{pod_path_prefix}/#{path}"}
+  ]
 
   s.dependency "CryptoSwift", "0.9.0"
   s.dependency "BigInt", "3.0.0"
