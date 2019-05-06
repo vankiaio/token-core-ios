@@ -22,3 +22,11 @@ module CoreBitcoin [system] {
   header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
   export *
 }
+
+module TokenCore [system] {
+  umbrella header "TokenCore-umbrella.h"
+  header "../Vendor/CoreBitcoin/CoreBitcoin.h"
+  header "../Vendor/CoreBitcoin/NSData+BTCData.h"
+  header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
+  export *
+}
