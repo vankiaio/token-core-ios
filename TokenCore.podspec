@@ -28,6 +28,18 @@ Pod::Spec.new do |s|
     "OTHER_LDFLAGS" => "-lObjC",
     "SWIFT_OPTIMIZATION_LEVEL" => "-Owholemodule"
   }
+  s.public_header_files = [umbrella_header] + [
+    "TokenCore.h",
+    "CoreBitcoin.h",
+    "NS+BTCBase58.h",
+    "NSData+BTCData.h",
+    "b64.h",
+    "crypto_scrypt-hexconvert.h",
+    "libscrypt.h",
+    "sha256.h",
+    "slowequals.h",
+    "sysendian.h"
+  ].map{|path| "#{pod_path_prefix}/#{path}"}
 
   s.dependency "CryptoSwift", "0.9.0"
   s.dependency "BigInt", "3.0.0"
