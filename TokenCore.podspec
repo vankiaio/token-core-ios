@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
     "OTHER_LDFLAGS" => "-lObjC",
     "SWIFT_OPTIMIZATION_LEVEL" => "-Owholemodule"
   }
-  s.public_header_files = [umbrella_header] + [
+
+  s.public_header_files = [
     "TokenCore.h",
     "CoreBitcoin.h",
     "NS+BTCBase58.h",
