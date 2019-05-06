@@ -17,6 +17,16 @@ module CCommonCrypto {
 }
 
 module CoreBitcoin [system] {
+  umbrella header "../Vendor/CoreBitcoin/TokenCore.h",
+  umbrella header "../Vendor/CoreBitcoin/CoreBitcoin.h",
+  umbrella header "../Vendor/CoreBitcoin/NS+BTCBase58.h",
+  umbrella header "../Vendor/CoreBitcoin/NSData+BTCData.h",
+  umbrella header "../Vendor/CoreBitcoin/b64.h",
+  umbrella header "../Vendor/CoreBitcoin/crypto_scrypt-hexconvert.h",
+  umbrella header "../Vendor/CoreBitcoin/libscrypt.h",
+  umbrella header "../Vendor/CoreBitcoin/sha256.h",
+  umbrella header "../Vendor/CoreBitcoin/slowequals.h",
+  umbrella header "../Vendor/CoreBitcoin/sysendian.h"
   header "../Vendor/CoreBitcoin/CoreBitcoin.h"
   header "../Vendor/CoreBitcoin/NSData+BTCData.h"
   header "../Vendor/CoreBitcoin/NS+BTCBase58.h"
