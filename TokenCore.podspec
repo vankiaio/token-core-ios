@@ -29,19 +29,6 @@ Pod::Spec.new do |s|
     "SWIFT_OPTIMIZATION_LEVEL" => "-Owholemodule"
   }
 
-  s.public_header_files = [
-    "TokenCore.h",
-    "CoreBitcoin.h",
-    "NS+BTCBase58.h",
-    "NSData+BTCData.h",
-    "b64.h",
-    "crypto_scrypt-hexconvert.h",
-    "libscrypt.h",
-    "sha256.h",
-    "slowequals.h",
-    "sysendian.h"
-  ]
-
   s.dependency "CryptoSwift", "0.9.0"
   s.dependency "BigInt", "3.0.0"
   s.dependency "GRKOpenSSLFramework"
