@@ -5,7 +5,7 @@ project 'TokenCore.xcodeproj'
 target 'TokenCore_Example' do
   
 #  pod 'TokenCore', :path => '../'
-  pod 'TokenCore', :git=> 'https://github.com/vankiaio/token-core-ios.git'
+  pod 'TokenCore', :git=> 'https://github.com/vankiaio/token-core-ios.git',:commit=>'master'
   pod 'PureLayout'
   pod 'MBProgressHUD', '~> 1.1.0'
   pod 'Alamofire', '~> 5.0.0-beta.6'

@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.6)
   - MBProgressHUD (~> 1.1.0)
   - PureLayout
-  - TokenCore (from `https://github.com/vankiaio/token-core-ios.git`)
+  - TokenCore (from `https://github.com/vankiaio/token-core-ios.git`, commit `master`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -30,11 +30,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   TokenCore:
+    :commit: master
     :git: https://github.com/vankiaio/token-core-ios.git
 
 CHECKOUT OPTIONS:
   TokenCore:
-    :commit: 7329f7597d9173bc2a3d2b391e2cff3a392ffb9b
+    :commit: master
     :git: https://github.com/vankiaio/token-core-ios.git
 
 SPEC CHECKSUMS:
@@ -47,6 +48,6 @@ SPEC CHECKSUMS:
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   TokenCore: ddbea2578a2b091c8429a9b9671460b5e22a56c4
 
-PODFILE CHECKSUM: 8d0035c1f0d1429d40bac59d5059f2f533bce968
+PODFILE CHECKSUM: c2590145d0227fa03aab42effb193d7fe47a6ad4
 
 COCOAPODS: 1.6.1
