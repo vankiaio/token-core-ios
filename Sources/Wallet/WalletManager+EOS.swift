@@ -60,6 +60,25 @@ public extension WalletManager {
     return try wallet.privateKeys(password: password)
   }
 
+  public static func changePassword(walletID: String, oldPassword: String, newPassword: String) throws -> BasicWallet{
+    let wallet = try findWalletByWalletID(walletID)
+
+    if wallet.imTokenMeta.chain != .eos {
+      throw GenericError.operationUnsupported
+    }
+
+    guard var keystore = wallet.keystore as? EOSKeystore else {
+      throw GenericError.operationUnsupported
+    }
+
+    wallet.keystore = try! keystore.changePassword(oldPassword: oldPassword, newPassword: newPassword)
+    if !Identity.storage.flushWallet(keystore) {
+      throw GenericError.storeWalletFailed
+    }
+
+    return wallet
+  }
+
   /// Sign EOS transaction
   /// - Parameters:
   ///   - walletID: Wallet ID.

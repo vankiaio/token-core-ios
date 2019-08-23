@@ -111,6 +111,34 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
     })
   }
 
+  func changePassword(oldPassword: String , newPassword: String) throws -> Keystore {
+
+    guard verify(password: oldPassword) else {
+      throw PasswordError.incorrect
+    }
+
+    let KeyPairs = keyPathPrivates.map({ (keyPathPrivate) -> KeyPair in
+      let decrypted = keyPathPrivate.encrypted.decrypt(crypto: crypto, password: oldPassword)
+      let privateKey = EOSKey(privateKey: decrypted.tk_dataFromHexString()!.bytes)
+      return KeyPair(privateKey: privateKey.wif, publicKey: keyPathPrivate.publicKey)
+    })
+
+    let privateKeys = [
+      KeyPairs[0].privateKey,
+      KeyPairs[1].privateKey
+    ]
+
+    let permissions = [
+      EOS.PermissionObject(permission: "owner", publicKey: KeyPairs[0].publicKey , parent: ""),
+      EOS.PermissionObject(permission: "active", publicKey: KeyPairs[1].publicKey , parent: "")
+    ]
+    let privateKeyMeta = WalletMeta(chain: .eos, source: .privateKey);
+
+    let keystore = try? EOSKeystore(accountName: address, password: newPassword, privateKeys: privateKeys, permissions: permissions, metadata: privateKeyMeta)
+
+    return keystore!
+  }
+
   var publicKeys: [String] {
     return keyPathPrivates.map { $0.publicKey }
   }
