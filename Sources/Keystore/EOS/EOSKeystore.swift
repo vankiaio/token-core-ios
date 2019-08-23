@@ -123,15 +123,19 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
       return KeyPair(privateKey: privateKey.wif, publicKey: keyPathPrivate.publicKey)
     })
 
-    let privateKeys = [
-      KeyPairs[0].privateKey,
-      KeyPairs[1].privateKey
+    var privateKeys = [
+      KeyPairs[0].privateKey
     ]
+    if(KeyPairs.count >= 2){
+      privateKeys.append(KeyPairs[1].privateKey)
+    }
 
-    let permissions = [
-      EOS.PermissionObject(permission: "owner", publicKey: KeyPairs[0].publicKey , parent: ""),
-      EOS.PermissionObject(permission: "active", publicKey: KeyPairs[1].publicKey , parent: "")
+    var permissions = [
+      EOS.PermissionObject(permission: "active", publicKey: KeyPairs[0].publicKey , parent: "")
     ]
+    if(KeyPairs.count >= 2){
+      permissions.append(EOS.PermissionObject(permission: "owner", publicKey: KeyPairs[1].publicKey , parent: ""))
+    }
     let privateKeyMeta = WalletMeta(chain: .eos, source: .privateKey);
 
     let keystore = try? EOSKeystore(accountName: address, password: newPassword, privateKeys: privateKeys, permissions: permissions, metadata: privateKeyMeta)
