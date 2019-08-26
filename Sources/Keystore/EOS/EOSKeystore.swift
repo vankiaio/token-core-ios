@@ -116,29 +116,50 @@ struct EOSKeystore: Keystore, EncMnemonicKeystore {
     guard verify(password: oldPassword) else {
       throw PasswordError.incorrect
     }
-
-    let KeyPairs = keyPathPrivates.map({ (keyPathPrivate) -> KeyPair in
-      let decrypted = keyPathPrivate.encrypted.decrypt(crypto: crypto, password: oldPassword)
-      let privateKey = EOSKey(privateKey: decrypted.tk_dataFromHexString()!.bytes)
-      return KeyPair(privateKey: privateKey.wif, publicKey: keyPathPrivate.publicKey)
-    })
-
-    var privateKeys = [
-      KeyPairs[0].privateKey
-    ]
-    if(KeyPairs.count >= 2){
-      privateKeys.append(KeyPairs[1].privateKey)
+    
+    var keystore : EOSKeystore? = nil;
+    
+    switch(meta.source){
+    case .privateKey:
+      let KeyPairs = keyPathPrivates.map({ (keyPathPrivate) -> KeyPair in
+        let decrypted = keyPathPrivate.encrypted.decrypt(crypto: crypto, password: oldPassword)
+        let privateKey = EOSKey(privateKey: decrypted.tk_dataFromHexString()!.bytes)
+        return KeyPair(privateKey: privateKey.wif, publicKey: keyPathPrivate.publicKey)
+      })
+      
+      var privateKeys = [
+        KeyPairs[0].privateKey
+      ]
+      if(KeyPairs.count >= 2){
+        privateKeys.append(KeyPairs[1].privateKey)
+      }
+      
+      var permissions = [
+        EOS.PermissionObject(permission: "active", publicKey: KeyPairs[0].publicKey , parent: "")
+      ]
+      if(KeyPairs.count >= 2){
+        permissions.append(EOS.PermissionObject(permission: "owner", publicKey: KeyPairs[1].publicKey , parent: ""))
+      }
+      let privateKeyMeta = WalletMeta(chain: .eos, source: .privateKey);
+      
+      keystore = try! EOSKeystore(accountName: address, password: newPassword, privateKeys: privateKeys, permissions: permissions, metadata: privateKeyMeta)
+      break;
+    case .mnemonic:
+      var mnemonicmeta = WalletMeta(chain: .eos, source: .mnemonic);
+      mnemonicmeta.name = "EOS";
+      
+      let mnemonicwords = String(data: encMnemonic.decrypt(crypto: crypto, password: oldPassword).tk_dataFromHexString()!, encoding: .utf8)!
+      keystore = try! EOSKeystore(accountName: address, password: newPassword, mnemonic: mnemonicwords, path: mnemonicPath, permissions: [], metadata: mnemonicmeta)
+      break;
+    case .newIdentity:
+      break;
+    case .recoveredIdentity:
+      break;
+    case .wif:
+      break;
+    case .keystore:
+      break;
     }
-
-    var permissions = [
-      EOS.PermissionObject(permission: "active", publicKey: KeyPairs[0].publicKey , parent: "")
-    ]
-    if(KeyPairs.count >= 2){
-      permissions.append(EOS.PermissionObject(permission: "owner", publicKey: KeyPairs[1].publicKey , parent: ""))
-    }
-    let privateKeyMeta = WalletMeta(chain: .eos, source: .privateKey);
-
-    let keystore = try? EOSKeystore(accountName: address, password: newPassword, privateKeys: privateKeys, permissions: permissions, metadata: privateKeyMeta)
 
     return keystore!
   }
